@@ -4,16 +4,27 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "tailwind": "npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@next/font": "13.1.5",
+    "axios": "^1.2.6",
+    "escape-html": "^1.0.3",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
+    "hammerjs": "^2.0.8",
     "next": "13.1.5",
+    "qs": "^6.11.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0",
+    "slate": "^0.88.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
   }
 }
