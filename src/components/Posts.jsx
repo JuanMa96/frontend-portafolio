@@ -11,14 +11,15 @@ import Link from 'next/link';
         )
     }else{
         return (
-            docs.map((post)=>(
+        <div id='posts'>    
+            {docs.map((post)=>(
                 <article key={post.id}>
                     <Link href={`/posts/${post.id}`} as={`/posts/${post.id}`}>
                         <Image src={post.image.sizes.card.url}
                             width={post.image.sizes.card.width}
                             height={post.image.sizes.card.height}
                             alt="a"
-                        />        
+                            />        
                     </Link>
                             
                     <h2>{post.title}</h2>
@@ -30,7 +31,8 @@ import Link from 'next/link';
                     </Link>
                     
                 </article>
-            ))
+            ))}
+        </div>
         );
     }  
   }
