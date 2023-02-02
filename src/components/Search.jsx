@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+const qs = require("qs")
 
 export function Search(){
   const [value, setValue] = useState("hola")
@@ -13,8 +13,19 @@ export function Search(){
   }
 
   function handleSubmit(event) {
-    value.trim() == ""? router.push(`/list/1`): router.push(`/search/${value.trim().replaceAll(" ", "-")}/1`)
     event.preventDefault();
+    if(value.trim() != ""){
+
+      const stringifiedQuery = qs.stringify({
+        search: value,
+        limit: 6,
+        sort: "-createdAt"
+      }, { addQueryPrefix: true });
+
+      router.push(`/prueba${stringifiedQuery}`)
+    }
+
+    
   }
 
     return (

@@ -57,8 +57,6 @@ export default async function ListPage({searchParams}){
    
     const res = await getSearch(page, 6, search)
 
-    console.log(res.query)
-
     return(
         <main>
             <div>
