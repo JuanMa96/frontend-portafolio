@@ -5,7 +5,7 @@ const qs = require("qs")
 
 export default async function SearchPage({params}){
 
-    const res = await getPosts(params.search, params.page)
+    const res = await getPosts(params.search.replaceAll("-", " "), params.page)
     
     return(
         <div>
@@ -17,9 +17,18 @@ export default async function SearchPage({params}){
 
 async function getPosts(_query, page) {
     const query = {
-        title: {
-            like: _query
-        }
+        or: [
+           {
+                title: {
+                    like: _query
+                }
+            },
+            {
+                description:{
+                    like: _query
+                }
+            } 
+        ]
     };
 
     const stringifiedQuery = qs.stringify({
@@ -28,7 +37,6 @@ async function getPosts(_query, page) {
         page
     }, { addQueryPrefix: true });
 
-    console.log(`http://localhost:3000/api/posts${stringifiedQuery}`)
     let response = await fetch(`http://localhost:3000/api/posts${stringifiedQuery}`, {cache: "no-store"});
     response = await response.json();
 
