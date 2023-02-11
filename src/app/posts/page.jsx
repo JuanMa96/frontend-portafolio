@@ -1,8 +1,9 @@
+import { Search } from "@/components/Search";
 import { Posts } from "@/components/posts"
 import { ButtonOfPagination } from "@/components/ButtonOfPagination"
 const qs = require("qs")
 
-export async function getSearch(_page = 1, _limit, _query) {
+export async function getSearch(_page = 1, _limit = 6, _query) {
     let stringifiedQuery;
     if(_query != undefined){
         const query = {
@@ -38,7 +39,6 @@ export async function getSearch(_page = 1, _limit, _query) {
     }
 
     let response = await fetch(`http://localhost:3000/api/posts${stringifiedQuery}`, {cache: "no-store"});
-    console.log(`http://localhost:3000/api/posts${stringifiedQuery}`)
     response = await response.json();
 
     response.query = {
@@ -60,8 +60,11 @@ export default async function ListPage({searchParams}){
     return(
         <main>
             <div>
-            <Posts docs={res.docs} />
-            <ButtonOfPagination page={page} totalPages={res.totalPages} query={res.query} link={`/prueba`} />
+            <div className='container mx-auto px-3 py-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
+                <Search />
+                <Posts docs={res.docs} />
+                <ButtonOfPagination page={page} totalPages={res.totalPages} query={res.query} link={`/posts`} />
+            </div>
         </div>
         </main>
     )

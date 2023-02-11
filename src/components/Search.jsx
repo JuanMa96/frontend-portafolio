@@ -1,11 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 const qs = require("qs")
 
-export function Search(){
-  const [value, setValue] = useState("hola")
+const usePreviousValue = value => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};
+
+export function Search({limit = 6}){
+  const [value, setValue] = useState("")
+  const prevValue = usePreviousValue(value)
   const router = useRouter()
 
   function handleChange(event) {
@@ -15,26 +24,30 @@ export function Search(){
   function handleSubmit(event) {
     event.preventDefault();
     if(value.trim() != ""){
-
-      const stringifiedQuery = qs.stringify({
-        search: value,
-        limit: 6,
-        sort: "-createdAt"
-      }, { addQueryPrefix: true });
-
-      router.push(`/prueba${stringifiedQuery}`)
+      if(value != prevValue){
+        const stringifiedQuery = qs.stringify({
+          search: value,
+          limit: limit,
+          sort: "-createdAt"
+        }, { addQueryPrefix: true });
+  
+        router.replace(`/posts${stringifiedQuery}`)
+      }
+    }else{
+      router.replace("posts")
     }
 
     
   }
 
     return (
-      <form onSubmit={handleSubmit} className="pt-14">
-        <label>
-          Name:
-          <input type="text" value={value} onChange={handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="col-span-full">
+        <form onSubmit={handleSubmit} className="flex justify-center md:justify-start">
+          <div className="basis-full md:basis-1/2 lg:basis-1/3 flex gap-3">
+            <input type="text" value={value} onChange={handleChange} className="basis-3/4 dark:bg-slate-800 rounded-xl shadow-sm shadow-slate-200 dark:shadow-white"/>
+            <input type="submit" value="Submit" className="basis-1/4 bg-yellow-400 text-black dark:bg-white dark:text-black rounded-xl shadow-sm shadow-slate-200 dark:shadow-white"/>
+          </div>
+        </form>
+      </div>
     );
 }

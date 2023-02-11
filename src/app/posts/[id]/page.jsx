@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import escapeHTML from 'escape-html';
 import { Text } from 'slate';
 import Link from 'next/link';
 import Image from 'next/image';
+import head from 'next/head';
 
 export function serialize(content){
   return content.map((node, i) => {
@@ -133,10 +133,6 @@ export function serialize(content){
                 </p>
               );
         }
-
-        if(node.type == "upload"){
-
-        }
     })
 
 }
@@ -150,12 +146,18 @@ async function getPost(id){
 export default async function proyect({params}){
     const {id} = params
     const post = await getPost(id)
-   
-    console.log(post)
+  
+    if(post.errors){
+      return <p>No se encontró el post</p>
+    }
+
     return (
+        
         <main className="pt-14">
             {serialize(post.content)}
         </main>
-        
+ 
+      
+     
     )
 }

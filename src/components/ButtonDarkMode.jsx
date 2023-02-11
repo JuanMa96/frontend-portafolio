@@ -3,18 +3,14 @@
 import { useEffect, useState } from "react"
 
 export function ButtonDarkMode(){
+    const [theme, setTheme] = useState("light")
 
-    function initialTheme(){
-        if (localStorage.getItem("theme") === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    useEffect(()=>{
+        if (localStorage.getItem("theme") == 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             setTheme("dark")
-          } else {
-            setTheme("light")
-          }
-    }
+        }
+    }, [])
 
-    const [theme, setTheme] = useState("dark")
-
-    useEffect(initialTheme, [])
     useEffect(()=>{
         if(theme == "dark"){
             document.body.classList.add("dark")
@@ -30,7 +26,7 @@ export function ButtonDarkMode(){
     }
 
     return(
-        <button onClick={changeThemeMode} className="bg-yellow-400 text-black py-1 px-3 rounded-lg">
+        <button onClick={changeThemeMode} className="bg-yellow-400 text-black py-1 px-3 dark:bg-white dark:text-black rounded-xl shadow-sm shadow-slate-200 dark:shadow-white">
             Cambiar a modo {theme == "dark"? "claro": "oscuro"}
         </button>
     )
