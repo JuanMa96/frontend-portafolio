@@ -32,7 +32,7 @@ export default function aboutPage(){
         </div>
         <div className="col-span-4 md:col-span-2 flex justify-center">
             <div className="md:basis-full lg:basis-1/2">
-                <Image src={"/perfil.png"} width={720} height={720} alt="Imagen de perfil de Juan María Mancedo" className="transition-[filter] grayscale hover:grayscale-0"/>
+                <Image src={"/perfil.png"} width={720} height={720} alt="Imagen de perfil de Juan María Mancedo" className="transition-[filter] grayscale-0 hover:grayscale dark:grayscale hover:dark:grayscale-0"/>
             </div>
         </div>
     </main>

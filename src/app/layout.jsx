@@ -1,8 +1,11 @@
 import '../../styles/output.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { cookies } from 'next/headers';
 
 export default function RootLayout({ children }) {
+  const cookieStore = cookies();
+
   return (
     <html lang="en">
       {/*

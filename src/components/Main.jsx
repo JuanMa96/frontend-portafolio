@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export function Main(){
     return(
-        <main className='h-[calc(100vh-56px)] container mx-auto px-3 py-7 flex justify-center items-center text-white'>
+        <main className='min-h-[calc(100vh-56px)] container mx-auto px-3 py-7 flex justify-center items-center text-white'>
             <div className="basis-full flex flex-col gap-6 shadow-xl rounded-2xl p-3">
                 <p className="text-lg">Hola, mi nombre es...</p>
                 <div className="">

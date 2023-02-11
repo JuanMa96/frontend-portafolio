@@ -15,10 +15,13 @@ import Link from 'next/link';
             {docs.map((post)=>(
                 <article key={post.id} className=" bg-white border-slate-800 dark:bg-slate-800 dark:border-white border-4 rounded-xl shadow-xl">
                     <Link href={`/posts/${post.id}`} as={`/posts/${post.id}`}>
-                        <Image src={post.image.sizes.card.url}
-                            width={post.image.sizes.card.width}
-                            height={post.image.sizes.card.height}
+                        <Image src={post.image.url}
+                            width={post.image.width}
+                            height={post.image.height}
                             alt="a"
+                            sizes="(max-size: 639px) 100vw,
+                               (max-size: 767px) 50vw,
+                               33vw"
                             />        
                     </Link>
                     <div className='p-3 flex flex-col items-center gap-3'>    

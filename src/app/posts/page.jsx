@@ -4,40 +4,52 @@ import { ButtonOfPagination } from "@/components/ButtonOfPagination"
 const qs = require("qs")
 
 export async function getSearch(_page = 1, _limit = 6, _query) {
-    let stringifiedQuery;
+    let query;
     if(_query != undefined){
-        const query = {
-            or: [
-               {
-                    title: {
-                        like: _query
+        query = {
+            and: [
+                {
+                    status: {
+                        equals: "published"
                     }
                 },
                 {
-                    description:{
-                        like: _query
-                    }
-                } 
+                    or: [
+                        {
+                            title: {
+                                like: _query
+                            }
+                        },
+                        {
+                            description:{
+                                like: _query
+                            }
+                        } 
+                    ]
+                }
             ]
         };
 
-
-        stringifiedQuery = qs.stringify({
-            where: query,
-            limit: _limit,
-            page: _page,
-            sort: "-createdAt"
-        }, { addQueryPrefix: true });
     
     }else{
-        stringifiedQuery = qs.stringify({
-            limit: _limit,
-            page: _page,
-            sort: "-createdAt"
-        }, { addQueryPrefix: true });
-
+        query = {
+            and: [
+                {
+                    status: {
+                        equals: "published"
+                    }
+                }
+            ]
+        };
+ 
     }
 
+    let stringifiedQuery = qs.stringify({
+        where: query,
+        limit: _limit,
+        page: _page,
+        sort: "-createdAt"
+    }, { addQueryPrefix: true });
     let response = await fetch(`http://localhost:3000/api/posts${stringifiedQuery}`, {cache: "no-store"});
     response = await response.json();
 

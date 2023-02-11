@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react"
 
+
 export function ButtonDarkMode(){
-    const [theme, setTheme] = useState("light")
+    const [theme, setTheme] = useState("light");
+
 
     useEffect(()=>{
         if (localStorage.getItem("theme") == 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

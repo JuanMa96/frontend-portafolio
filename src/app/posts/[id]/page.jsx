@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import head from 'next/head';
 
-export function serialize(content){
+export function serialize(content, parent = "noLi"){
   return content.map((node, i) => {
         if (Text.isText(node)) { 
           let text = <span>{node.text}</span> 
@@ -33,8 +33,30 @@ export function serialize(content){
               );
             }
         
-            // Handle other leaf types here...
-        
+            if(node.underline){
+              text = (
+                <span className='underline'>
+                  {text}
+                </span>
+              )
+            }
+
+            if(node.strikethrough){
+              text =(
+                <span className='line-through'>
+                  {text}
+                </span>
+              )
+            }
+           
+            if(node.text.trim() == ""){
+              return(
+                <Fragment key={i}>
+                  <br />
+                </Fragment>
+              )
+            }
+
             return (
               <Fragment key={i}>
                 {text}
@@ -49,47 +71,55 @@ export function serialize(content){
         switch (node.type) {
             case 'h1':
               return (
-                <h1 key={i}>
+                <h1 key={i} className="text-4xl">
                   {serialize(node.children)}
                 </h1>
               );
             case 'h2':
                 return (
-                  <h2 key={i}>
+                  <h2 key={i} className="text-3xl">
                     {serialize(node.children)}
                   </h2>
                 );
             case 'h3':
                 return (
-                  <h3 key={i}>
+                  <h3 key={i} className="text-2xl">
                     {serialize(node.children)}
                   </h3>
                 );
             case 'h4':
                 return (
-                  <h4 key={i}>
+                  <h4 key={i} className="text-xl">
                     {serialize(node.children)}
                   </h4>
                 );
             case 'h5':
                 return (
-                  <h5 key={i}>
+                  <h5 key={i} className="text-lg">
                     {serialize(node.children)}
                   </h5>
                 );
             case 'h6':
               return (
-                <h6 key={i}>
+                <h6 key={i} className="text-base">
                   {serialize(node.children)}
                 </h6>
               );
             case "upload":
               return(
-                <Image  key={i}
-                        src={node.value.sizes.tablet.url}
-                        width={node.value.sizes.tablet.width}
-                        height={node.value.sizes.tablet.height}
+                <div className='flex justify-center items-center'>
+                  <div className='basis-full md:basis-1/2 lg:basis-1/3'>
+                    <Image  key={i}
+                        src={node.value.url}
+                        width={node.value.width}
+                        height={node.value.height}
+                        sizes="(max-size: 639px) 100vw,
+                               (max-size: 767px) 50vw,
+                               33vw"
+                        className='w-full h-auto'
                     />
+                  </div>
+                </div>
               );
             case 'quote':
               return (
@@ -99,20 +129,21 @@ export function serialize(content){
               );
             case 'ul':
               return (
-                <ul key={i}>
+                <ul key={i} className="list-disc list-inside pl-16">
                   {serialize(node.children)}
                 </ul>
               );
             case 'ol':
               return (
-                <ol key={i}>
+                <ol key={i} className="list-decimal list-inside w-full">
                   {serialize(node.children)}
                 </ol>
               );
             case 'li':
+              
               return (
-                <li key={i}>
-                  {serialize(node.children)}
+                <li key={i} className="w-full">
+                  {serialize(node.children, "li")}
                 </li>
               );
             case 'link':
@@ -125,8 +156,18 @@ export function serialize(content){
                   {serialize(node.children)}
                 </Link>
               );
-        
+            case "indent":
+              return(
+                <span className='inline-block pl-16 w-full'>{serialize(node.children)}</span>
+              )
             default:
+              if(parent === "li"){
+                return (
+                  <span key={i}>
+                    {serialize(node.children)}
+                  </span>
+                )
+              }
               return (
                 <p key={i}>
                   {serialize(node.children)}
@@ -152,12 +193,10 @@ export default async function proyect({params}){
     }
 
     return (
-        
-        <main className="pt-14">
+      <div className='p-3'>
+        <main className='container mx-auto p-3 bg-white dark:bg-slate-800 shadow-xl rounded-2xl'>
             {serialize(post.content)}
-        </main>
- 
-      
-     
+        </main>    
+      </div>  
     )
 }
