@@ -50,7 +50,7 @@ export async function getSearch(_page = 1, _limit = 6, _query) {
         page: _page,
         sort: "-createdAt"
     }, { addQueryPrefix: true });
-    let response = await fetch(`${process.env.PAYLOADURL}api/posts${stringifiedQuery}`, {cache: "no-store"});
+    let response = await fetch(`${process.env.PAYLOAD_URL}/api/posts${stringifiedQuery}`, {cache: "no-store"});
     response = await response.json();
 
     response.query = {

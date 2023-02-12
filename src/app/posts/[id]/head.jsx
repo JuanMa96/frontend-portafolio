@@ -16,7 +16,7 @@ export default async function Head({ params }){
             <meta name="description" content={post.description} />
             <meta name="keywords" content={post.keywords} />
             
-            <meta property="og:url" content={`${process.env.NEXT_PUBLIC_LOCALURL}posts/${post.id}`} />            
+            <meta property="og:url" content={`${process.env.NEXT_PUBLIC__PUBLIC_BASE_DNS}/posts/${post.id}`} />            
             
             <meta property="og:title" content={post.title} />
             <meta property="og:image" content={post.image.sizes.tablet.url} />

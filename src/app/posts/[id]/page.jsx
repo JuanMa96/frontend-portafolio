@@ -179,7 +179,7 @@ export function serialize(content, parent = "noLi"){
 }
 
 export async function getPost(id){
-    let result = await fetch(`${process.env.PAYLOADURL}api/posts/${id}`, {cache: "no-cache"})
+    let result = await fetch(`${process.env.PAYLOAD_URL}/api/posts/${id}`, {cache: "no-cache"})
     result = await result.json()
     return result
 }
