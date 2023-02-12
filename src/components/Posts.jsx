@@ -18,7 +18,7 @@ import Link from 'next/link';
                         <Image src={post.image.url}
                             width={post.image.width}
                             height={post.image.height}
-                            alt="a"
+                            alt={post.image.alt}
                             sizes="(max-size: 639px) 100vw,
                                (max-size: 767px) 50vw,
                                33vw"
@@ -30,7 +30,7 @@ import Link from 'next/link';
                             {post.description}
                         </p>
                         <Link href={`/posts/${post.id}`} as={`/posts/${post.id}`} className="py-1 px-3 text-center bg-yellow-400 text-black dark:bg-white dark:text-black rounded-xl shadow-sm shadow-slate-200 dark:shadow-white">
-                            Click me
+                            Ver más
                         </Link>
                     </div>
                 </article>

@@ -1,8 +1,14 @@
 import Image from "next/image"
+import Head from "next/head";
+
+export const metadata = {
+    title: 'Home',
+    description: 'Welcome to Next.js',
+    
+  };
 
 export default function aboutPage(){
     return(
-        
     <main className='min-h-[calc(100vh-56px)] container mx-auto px-3 py-7 grid grid-cols-4 gap-3 text-white'>
         <h1 className="col-span-4 text-5xl md:text-7xl lg:text-8xl font-serif text-center">About</h1>
         <div className="col-span-4 md:col-span-2 h-full flex flex-col px-3 py-7 gap-3 shadow-xl rounded-2xl justify-between">

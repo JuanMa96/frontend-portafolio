@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { Text } from 'slate';
 import Link from 'next/link';
 import Image from 'next/image';
-import head from 'next/head';
 
 export function serialize(content, parent = "noLi"){
   return content.map((node, i) => {
@@ -35,7 +34,7 @@ export function serialize(content, parent = "noLi"){
         
             if(node.underline){
               text = (
-                <span className='underline'>
+                <span key={i} className='underline'>
                   {text}
                 </span>
               )
@@ -43,7 +42,7 @@ export function serialize(content, parent = "noLi"){
 
             if(node.strikethrough){
               text =(
-                <span className='line-through'>
+                <span key={i} className='line-through'>
                   {text}
                 </span>
               )
@@ -113,6 +112,7 @@ export function serialize(content, parent = "noLi"){
                         src={node.value.url}
                         width={node.value.width}
                         height={node.value.height}
+                        alt={node.value.alt}
                         sizes="(max-size: 639px) 100vw,
                                (max-size: 767px) 50vw,
                                33vw"
@@ -158,7 +158,7 @@ export function serialize(content, parent = "noLi"){
               );
             case "indent":
               return(
-                <span className='inline-block pl-16 w-full'>{serialize(node.children)}</span>
+                <span key={i} className='inline-block pl-16 w-full'>{serialize(node.children)}</span>
               )
             default:
               if(parent === "li"){
@@ -178,8 +178,8 @@ export function serialize(content, parent = "noLi"){
 
 }
 
-async function getPost(id){
-    let result = await fetch(`http://localhost:3000/api/posts/${id}`, {cache: "no-cache"})
+export async function getPost(id){
+    let result = await fetch(`${process.env.PAYLOADURL}api/posts/${id}`, {cache: "no-cache"})
     result = await result.json()
     return result
 }
@@ -193,10 +193,11 @@ export default async function proyect({params}){
     }
 
     return (
-      <div className='p-3'>
-        <main className='container mx-auto p-3 bg-white dark:bg-slate-800 shadow-xl rounded-2xl'>
-            {serialize(post.content)}
-        </main>    
-      </div>  
+        
+        <div  className='p-3'>
+          <main className='container mx-auto p-3 bg-white dark:bg-slate-800 shadow-xl rounded-2xl'>
+              {serialize(post.content)}
+          </main>    
+        </div>  
     )
 }

@@ -4,10 +4,10 @@ export default function Head() {
   return (
     <>
       <DefaultTags />
-      <title>JM | Home</title>
+      <title>JM | Posts</title>
       <meta name="description" content="Desarrollador web frontend - JM" />
       
-      <meta property="og:url" content={process.env.NEXT_PUBLIC_LOCALURL} />            
+      <meta property="og:url" content={`${process.env.NEXT_PUBLIC_LOCALURL}posts`} />            
 
       <meta property="og:title" content="JM portafio" />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_LOCALURL}img/cover.jpg`} />

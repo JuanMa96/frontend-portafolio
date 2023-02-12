@@ -10,7 +10,9 @@ export function Main(){
                     <p className="text-5xl md:text-7xl lg:text-8xl">Y hago páginas increíbles</p>
                 </div>
                 <p className="text-lg w-full md:w-3/4 lg:w-1/2">Soy un desarrollador frontend junior que se dedica a crear páginas webs increíbles. Una de las tecnologías que más me gustan y que utilice para este sitio es Next.js</p>
-                <Link href="https://wa.me/543794870926?text=Hola,%20necesito%20un%20desarrollador%20web" target="_blank" className="self-center bg-yellow-400 text-black dark:bg-white dark:text-black rounded-xl shadow-sm shadow-slate-200 dark:shadow-white py-1 px-3">Contactame</Link>
+                <Link href="https://wa.me/543794870926?text=Hola,%20necesito%20un%20desarrollador%20web" target="_blank" className="self-center bg-yellow-400 text-black dark:bg-white dark:text-black rounded-xl shadow-sm shadow-slate-200 dark:shadow-white py-1 px-3">
+                    <span className="before:align-middle before:font-icons before:content-['c']"> Contactame</span>     
+                </Link>
             </div>
         </main>
     )

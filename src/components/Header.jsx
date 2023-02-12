@@ -22,14 +22,14 @@ export function Header(){
     return(
         <header className="bg-cyan-400 dark:bg-slate-800 h-14 fixed w-full z-10">
             <nav className="h-full flex justify-between items-center mx-auto container px-3">
-                <Link href="/" onClick={handleClick} className="z-10 font-mono text-3xl text-slate-900 dark:text-white">Brand</Link>
+                <Link href="/" onClick={handleClick} className="z-10 font-mono text-3xl text-slate-900 dark:text-white">JM</Link>
                 <div className="relative flex gap-3">
                     <ButtonDarkMode className="z-10"/>
-                    <button className="dark:text-white" onClick={handleClickButton}>X</button>
+                    <button className="dark:text-white align-middle font-icons" onClick={handleClickButton}>g</button>
                 </div>
                 <div className={classListUl + "fixed inset-0 flex justify-center transition-transform duration-1000 bg-gradient-to-b from-cyan-500 to-blue-500 dark:from-cyan-900 dark:to-blue-900 dark:text-white"}>
                     <div className="container h-14 flex pr-3 justify-end items-center z-10">
-                        <button className="dark:text-white" onClick={handleClickButton}>X</button>
+                        <button className="dark:text-white align-middle font-icons" onClick={handleClickButton}>h</button>
                     </div>
                     <div  className="absolute inset-0 flex justify-center items-center">
                         <ul>
