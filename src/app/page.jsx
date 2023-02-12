@@ -1,5 +1,5 @@
 import { Inter } from '@next/font/google'
-import { Posts } from '@/components/posts'
+import { Posts } from '@/components/Posts'
 import { getSearch } from './posts/page'
 import Link from 'next/link'
 import { Main } from '@/components/Main'

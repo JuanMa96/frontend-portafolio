@@ -1,5 +1,5 @@
 import { Search } from "@/components/Search";
-import { Posts } from "@/components/posts"
+import { Posts } from "@/components/Posts"
 import { ButtonOfPagination } from "@/components/ButtonOfPagination"
 const qs = require("qs")
 
