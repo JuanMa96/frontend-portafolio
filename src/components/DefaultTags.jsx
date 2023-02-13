@@ -3,7 +3,7 @@ export function DefaultTags(){
         <>
             <meta content="width=device-width, initial-scale=1" name="viewport" />
             <meta lang="es"/>
-            <link rel="icon" href="/favicon.ico" />   
+            <link rel="icon" href={`${process.env.NEXT_PUBLIC__PUBLIC_BASE_DNS}/favicon.ico`} />   
                 
             <meta name="author" content="Juan María Mancedo" />
             <meta name="distribution" content="global" />
