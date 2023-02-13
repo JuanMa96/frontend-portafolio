@@ -1,4 +1,5 @@
 import { DefaultTags } from "@/components/DefaultTags"
+import { GoogleTags } from "@/components/googleTags"
 
 export default function Head() {
   return (

@@ -1,6 +1,8 @@
+import { GoogleTags } from "./googleTags"
 export function DefaultTags(){
     return(
         <>
+            <GoogleTags />
             <meta content="width=device-width, initial-scale=1" name="viewport" />
             <meta lang="es"/>
             <link rel="icon" href={`${process.env.NEXT_PUBLIC__PUBLIC_BASE_DNS}/favicon.ico`} />   
