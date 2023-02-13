@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Main } from '@/components/Main'
 
 const inter = Inter({ subsets: ['latin'] })
+export const dynamic = 'force-dynamic'
 
 export default async function Home() {
   const res = await getSearch(1, 6)

@@ -3,6 +3,7 @@ import { Text } from 'slate';
 import Link from 'next/link';
 import Image from 'next/image';
 
+export const dynamic = 'force-dynamic'
 export function serialize(content, parent = "noLi"){
   return content.map((node, i) => {
         if (Text.isText(node)) { 
@@ -185,15 +186,13 @@ export async function getPost(id){
 }
 
 export default async function proyect({params}){
-    const {id} = params
-    const post = await getPost(id)
+    const post = await getPost(params.id)
   
     if(post.errors){
       return <p>No se encontró el post</p>
     }
 
     return (
-        
         <div  className='p-3'>
           <main className='container mx-auto p-3 bg-white dark:bg-slate-800 shadow-xl rounded-2xl'>
               {serialize(post.content)}

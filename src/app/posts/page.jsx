@@ -3,6 +3,7 @@ import { Posts } from "@/components/Posts"
 import { ButtonOfPagination } from "@/components/ButtonOfPagination"
 const qs = require("qs")
 
+export const dynamic = 'force-dynamic'
 export async function getSearch(_page = 1, _limit = 6, _query) {
     let query;
     if(_query != undefined){
