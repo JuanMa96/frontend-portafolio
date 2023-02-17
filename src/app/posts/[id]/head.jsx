@@ -19,12 +19,12 @@ export default async function Head({ params }){
             <meta property="og:url" content={`${process.env.NEXT_PUBLIC__PUBLIC_BASE_DNS}/posts/${post.id}`} />            
             
             <meta property="og:title" content={post.title} />
-            <meta property="og:image" content={post.image.sizes.tablet.url || post.image.url} />
+            <meta property="og:image" content={post.image.url} />
             <meta property="og:description" content={post.description} />
 
             <meta name="twitter:title" content={post.title} />
             <meta name="twitter:description" content={post.description} />
-            <meta name="twitter:image" content={post.image.sizes.tablet.url || post.image.url}/>
+            <meta name="twitter:image" content={post.image.url}/>
             <meta name="twitter:image:alt" content={post.image.alt} />
         </>
     )
