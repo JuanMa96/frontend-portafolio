@@ -24,11 +24,11 @@ import Link from 'next/link';
                                33vw"
                             />        
                     </Link>
-                    <h2 className='text-slate-900 dark:text-white text-2xl px-3'>{post.title}</h2>
-                    <p className='text-slate-500 dark:text-slate-400 px-3'>
-                        {post.description}
-                    </p>
-                    <div className='pb-3'>
+                    <div className='p-3 grow flex flex-col justify-between items-center gap-3'>
+                        <h2 className='text-slate-900 dark:text-white text-2xl px-3'>{post.title}</h2>
+                        <p className='text-slate-500 dark:text-slate-400 px-3'>
+                            {post.description}
+                        </p>
                         <Link href={`/posts/${post.id}`} as={`/posts/${post.id}`} className="py-1 px-3 text-center bg-yellow-400 text-black dark:bg-white dark:text-black rounded-xl shadow-sm shadow-slate-200 dark:shadow-white">
                             Ver más
                         </Link>
