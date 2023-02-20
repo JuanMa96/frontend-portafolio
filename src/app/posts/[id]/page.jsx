@@ -108,7 +108,7 @@ export function serialize(content, parent = "noLi"){
             case "upload":
               return(
                 <div className='flex justify-center items-center'>
-                  <div className='basis-full md:basis-1/2 lg:basis-1/3'>
+                  <div className='h-fit'>
                     <Image  key={i}
                         src={node.value.url}
                         width={node.value.width}
@@ -117,7 +117,7 @@ export function serialize(content, parent = "noLi"){
                         sizes="(max-size: 639px) 100vw,
                                (max-size: 767px) 50vw,
                                33vw"
-                        className='w-full h-auto'
+                        className='object-scale-down'
                     />
                   </div>
                 </div>

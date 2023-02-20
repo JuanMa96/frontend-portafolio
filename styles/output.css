@@ -643,8 +643,9 @@ video {
   height: 100%;
 }
 
-.h-auto {
-  height: auto;
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .min-h-screen {
@@ -806,6 +807,11 @@ video {
   --tw-gradient-to: #3b82f6;
 }
 
+.object-scale-down {
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+}
+
 .p-3 {
   padding: 0.75rem;
 }
@@ -831,10 +837,6 @@ video {
 
 .pr-3 {
   padding-right: 0.75rem;
-}
-
-.pb-3 {
-  padding-bottom: 0.75rem;
 }
 
 .pl-16 {
