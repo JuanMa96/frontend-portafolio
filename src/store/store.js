@@ -1,11 +1,17 @@
 import { createStore } from "redux";
 
-function reducer(store, action){
+function reducer(state, action){
     switch(action.type){
-        case "toggleTheme":
-            if(store.theme != "dark") return "dark"
+        case "toggle theme":
+            if(state != "dark") return "dark"
             return "light"
+        case "change to dark":
+            return "dark"
+        case "change to light":
+            return "light"
+        default:
+            return state
     }
 }
 
-export const store = createStore(reducer)
+export const store = createStore(reducer, "dark")

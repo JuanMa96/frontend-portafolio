@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
 export default function aboutPage(){
     return(
     <main className='min-h-[calc(100vh-56px)] container mx-auto px-3 py-7 grid grid-cols-4 gap-3 text-white'>
