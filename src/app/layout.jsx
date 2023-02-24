@@ -13,9 +13,9 @@ export default function RootLayout({ children }) {
         head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body className={`${cookieStore.has("theme")? cookieStore.get("theme").value : "light"}`}>
         <div className='min-h-screen flex flex-col justify-between dark:text-white   bg-gradient-to-r from-cyan-500 to-blue-500 dark:from-cyan-900 dark:to-blue-900'>
-          <Header />
+          <Header theme={`${cookieStore.has("theme")? cookieStore.get("theme").value : "light"}`}/>
             <div className='pt-14'>
               {children}
             </div>

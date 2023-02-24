@@ -1,30 +1,65 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useReducer, useState } from "react"
 
-
-export function ButtonDarkMode(){
-    const [theme, setTheme] = useState("light");
-
-
-    useEffect(()=>{
-        if (localStorage.getItem("theme") == 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            setTheme("dark")
+function Cookies(){
+    function getCookie(cname) {
+        let name = cname + "=";
+        let ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
         }
-    }, [])
+        return "";
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function hasCookie(key) {
+        let user = getCookie(key);
+        if(user != "") return true  
+        return false
+      }
+    
+    return{
+        getCookie,
+        setCookie,
+        hasCookie
+    }
+}
+
+const cookies = Cookies()
+
+export function ButtonDarkMode(props){
+    const [theme, setTheme] = useState(props.theme);
 
     useEffect(()=>{
-        if(theme == "dark"){
+        if(cookies.getCookie("theme") == 'dark' || (!(cookies.hasCookie("theme")) && window.matchMedia('(prefers-color-scheme: dark)').matches)){
             document.body.classList.add("dark")
-            localStorage.setItem("theme", "dark")
+            cookies.setCookie("theme", "dark")
         }else{
             document.body.classList.remove("dark")
-            localStorage.setItem("theme", "light")
+            cookies.setCookie("theme", "light")
         }
     })
 
     function changeThemeMode(){
-        setTheme(prev=>prev == "dark"? "light" : "dark")
+        if(cookies.getCookie("theme") == "dark"){
+            cookies.setCookie("theme", "light")
+        }else{
+            cookies.setCookie("theme", "dark")
+        }
+        setTheme((prevTheme)=>prevTheme == "dark"? "light": "dark")
     }
 
     return(

@@ -5,7 +5,9 @@ import { useState } from "react"
 import Link from 'next/link'
 import { ButtonDarkMode } from "./ButtonDarkMode"
 
-export function Header(){
+
+export function Header(props){
+
     const [open, setOpen] = useState(false)
 
 
@@ -24,7 +26,7 @@ export function Header(){
             <nav className="h-full flex justify-between items-center mx-auto container px-3">
                 <Link href="/" onClick={handleClick} className="z-10 font-mono text-3xl text-slate-900 dark:text-white">JM</Link>
                 <div className="relative flex gap-3">
-                    <ButtonDarkMode className="z-10"/>
+                    <ButtonDarkMode className="z-10" theme={props.theme} />
                     <button className="dark:text-white align-middle font-icons" onClick={handleClickButton}>g</button>
                 </div>
                 <div className={classListUl + "fixed inset-0 flex justify-center transition-transform duration-1000 bg-gradient-to-b from-cyan-500 to-blue-500 dark:from-cyan-900 dark:to-blue-900 dark:text-white"}>
