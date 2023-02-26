@@ -1,5 +1,5 @@
 import { ChangeCookies } from "@/components/cookies/ChangeCookies"
-import { Settings } from "@/components/cookies/Settings"
+import Link from "next/link"
 
 export default function Privacity(){
     return(
@@ -33,34 +33,34 @@ export default function Privacity(){
                     </p>
                     <ul className="pl-10 list-disc underline">
                         <li>
-                            <a href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&oco=1&hl=es-419" target={"_blank"}>
+                            <Link href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&oco=1&hl=es-419" target="_blank">
                                 Google Chrome
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="https://support.mozilla.org/es/kb/impedir-que-los-sitios-web-guarden-sus-preferencia" target={"_blank"}>
+                            <Link href="https://support.mozilla.org/es/kb/impedir-que-los-sitios-web-guarden-sus-preferencia" rel="noreferrer" target="_blank">
                                 Mozilla Firefox
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="https://support.apple.com/es-lamr/guide/safari/sfri11471/mac" target={"_blank"}>
+                            <Link href="https://support.apple.com/es-lamr/guide/safari/sfri11471/mac" rel="noreferrer" target="_blank">
                                 Safari
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target={"_blank"}>
+                            <Link href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" rel="noreferrer" target="_blank">
                                 Internet Explorer
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target={"_blank"}>
+                            <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" rel="noreferrer" target="_blank">
                                 Microsoft Edge
                             </a>
                         </li>
                         <li>
-                            <a href="https://help.opera.com/en/latest/web-preferences/#cookies" target={"_blank"}>
+                            <Link href="https://help.opera.com/en/latest/web-preferences/#cookies" rel="noreferrer" target="_blank">
                                 Opera
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
