@@ -2,7 +2,7 @@ import '../../styles/output.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { cookies } from 'next/headers';
-import { CookiesWarning } from '@/components/CookieWarning';
+import { CookiesWarning } from '@/components/cookies/CookieWarning';
 
 export default function RootLayout({ children }) {
   const cookieStore = cookies();
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
             <div className='pt-14'>
               {children}
             </div>
-            {cookieStore.has("acepted cookies") != true || cookieStore.get("acepted cookies").value != "true"? <CookiesWarning /> : null}
+            <CookiesWarning open={cookieStore.has("acepted cookies") != true || cookieStore.get("acepted cookies").value != "true"? true : false} />
           <Footer />
         </div>
       </body>  

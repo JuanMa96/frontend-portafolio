@@ -1,7 +1,10 @@
-import { ChangeCookies } from "@/components/ChangeCookies"
+import { ChangeCookies } from "@/components/cookies/ChangeCookies"
+import { Settings } from "@/components/cookies/Settings"
 
 export default function Privacity(){
     return(
+        <>
+        
         <div className="p-3 flex justify-center items-center">
             <div className="container p-3 grid grid-cols-1 gap-3 bg-white dark:bg-slate-800 shadow-xl rounded-2xl text-base md:text-lg">
                 <h1 className="text-3xl">
@@ -18,8 +21,7 @@ export default function Privacity(){
                     </ul>
                 </div>
                 <p>
-                    Si no estás de acuerdo con nuestro uso de cookies, 
-                    <ChangeCookies />
+                    Si no estás de acuerdo con nuestro uso de cookies, <ChangeCookies />
                     . Aplicaremos los cambios que hagas en el navegador que estés usando.
                 </p>
                 <p>
@@ -67,5 +69,6 @@ export default function Privacity(){
                 </p>
             </div>
         </div>
+        </>
     )
 }

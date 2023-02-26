@@ -3,7 +3,7 @@
 import { handleClientScriptLoad } from "next/script"
 import { useState } from "react"
 import Link from 'next/link'
-import { ButtonDarkMode } from "./ButtonDarkMode"
+import { ButtonDarkMode } from "./dark mode/ButtonDarkMode"
 
 
 export function Header(props){

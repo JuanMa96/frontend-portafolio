@@ -7,17 +7,18 @@ import { Cookies } from "@/assets/javascript/cookies"
 const cookies = Cookies()
 
 export function DarkMode(props){
-    const theme = useSelector(theme => theme)
+    const theme = useSelector(state => state.theme)
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        if(cookies.getCookie("theme") == 'dark' || (!(cookies.hasCookie("theme")) && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+        if(theme == 'dark' || (!(cookies.hasCookie("theme")) && window.matchMedia('(prefers-color-scheme: dark)').matches)){
             document.body.classList.add("dark")
             cookies.setCookie("theme", "dark", 365)
         }else{
             document.body.classList.remove("dark")
             cookies.setCookie("theme", "light", 365)
         }
+
     })
 
     function changeThemeMode(){

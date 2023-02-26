@@ -4,6 +4,7 @@ import { getSearch } from './posts/page'
 import Link from 'next/link'
 import { Main } from '@/components/Main'
 
+
 //comentario porque si
 const inter = Inter({ subsets: ['latin'] })
 export const dynamic = 'force-dynamic'
