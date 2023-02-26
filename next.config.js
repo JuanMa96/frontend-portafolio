@@ -6,10 +6,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: process.env.PAYLOAD_URL.includes("https://")? "https": "http",
-        hostname: process.env.PAYLOAD_URL.includes("https://")? process.env.PAYLOAD_URL.slice(8): process.env.PAYLOAD_URL.slice(7) ,
+        protocol: "https",
+        hostname: "res.cloudinary.com",
         port: '',
-        pathname: '/media/**',
+        pathname: '/**',
       },
     ],
   },

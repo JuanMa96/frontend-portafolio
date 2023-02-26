@@ -3,7 +3,6 @@ import { Posts } from '@/components/Posts'
 import { getSearch } from './posts/page'
 import Link from 'next/link'
 import { Main } from '@/components/Main'
-import { ButtonDarkMode } from '@/components/ButtonDarkMode'
 
 //comentario porque si
 const inter = Inter({ subsets: ['latin'] })
@@ -14,7 +13,6 @@ export default async function Home() {
   return (
     <div>
       <Main />
-      <ButtonDarkMode />
       <section>
         <div className='container mx-auto px-3 py-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
           <Posts docs={res.docs}/>
