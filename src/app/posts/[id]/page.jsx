@@ -114,9 +114,6 @@ export function serialize(content, parent = "noLi"){
                         width={node.value.width}
                         height={node.value.height}
                         alt={node.value.alt}
-                        sizes="(max-size: 639px) 100vw,
-                               (max-size: 767px) 50vw,
-                               33vw"
                         className='object-scale-down'
                     />
                   </div>

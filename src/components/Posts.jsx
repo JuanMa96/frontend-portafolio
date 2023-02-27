@@ -19,9 +19,6 @@ import Link from 'next/link';
                             width={post.image.width}
                             height={post.image.height}
                             alt={post.image.alt}
-                            sizes="(max-size: 639px) 100vw,
-                               (max-size: 767px) 50vw,
-                               33vw"
                             />        
                     </Link>
                     <div className='p-3 grow flex flex-col justify-between items-center gap-3'>
