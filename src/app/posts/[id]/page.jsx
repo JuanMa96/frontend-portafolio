@@ -108,7 +108,7 @@ export function serialize(content, parent = "noLi"){
             case "upload":
               return(
                 <div className='flex justify-center items-center'>
-                  <div className='h-fit'>
+                  <div className='relative h-fit'>
                     <Image  key={i}
                         src={node.value.url}
                         width={node.value.width}
@@ -177,7 +177,7 @@ export function serialize(content, parent = "noLi"){
 }
 
 export async function getPost(id){
-    let result = await fetch(`${process.env.PAYLOAD_URL}/api/posts/${id}`, {cache: "no-store"})
+    let result = await fetch(`${process.env.PAYLOAD_URL}/api/posts/${id}`)
     result = await result.json()
     return result
 }

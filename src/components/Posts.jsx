@@ -19,6 +19,7 @@ import Link from 'next/link';
                             width={post.image.width}
                             height={post.image.height}
                             alt={post.image.alt}
+
                             />        
                     </Link>
                     <div className='p-3 grow flex flex-col justify-between items-center gap-3'>
